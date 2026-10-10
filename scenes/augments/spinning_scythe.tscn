@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bygudsix5q65x"]
+
+[ext_resource type="Script" uid="uid://cva8lmjjgw8uy" path="res://scripts/augments/spinning_scythe.gd" id="1_smikn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okgmn"]
+radius = 68.224724
+
+[node name="SpinningScythe" type="Area2D" unique_id=285416767]
+collision_mask = 2
+script = ExtResource("1_smikn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616977570]
+shape = SubResource("CircleShape2D_okgmn")

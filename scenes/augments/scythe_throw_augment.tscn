@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://doyuedo2crdgb"]
+
+[ext_resource type="Script" uid="uid://c1quk7g1itt2y" path="res://scripts/augments/scythe_throw_augment.gd" id="1_qmsn8"]
+
+[node name="ScytheThrowAugment" type="Node2D" unique_id=1334220271]
+script = ExtResource("1_qmsn8")
+damage = 50.0
+cooldown = 3.0

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://djxk1hij0ajwx"]
+
+[ext_resource type="Script" uid="uid://oaq6ggsioktn" path="res://scripts/enemy.gd" id="1_7k104"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 40.0
+
+[node name="BruteEnemy" type="Area2D" unique_id=1054710329 node_paths=PackedStringArray("shape") groups=["enemies"]]
+collision_layer = 2
+collision_mask = 3
+linear_damp = 4.0
+script = ExtResource("1_7k104")
+speed = 100.0
+health = 150.0
+hit_mass = 8.0
+shape = NodePath("CollisionShape2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=652163555]
+color = Color(0.9665025, 0.5, 0.25092408, 1)
+polygon = PackedVector2Array(-21.500366, -26.150253, -20.134338, 19.611649, 22.895508, 20.294662, 22.212524, -23.418198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707196298]
+shape = SubResource("CircleShape2D_4gyqm")

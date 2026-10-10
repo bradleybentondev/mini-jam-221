@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bictx71pvou6i"]
+
+[ext_resource type="Script" uid="uid://c8s34kb7cyxha" path="res://scripts/ui.gd" id="1_fyqef"]
+
+[node name="ui" type="Control" unique_id=1629722552 node_paths=PackedStringArray("health_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fyqef")
+health_bar = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1035808804]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 112.59942
+grow_vertical = 0
+step = 1.0
+value = 100.0
+show_percentage = false

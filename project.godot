@@ -28,6 +28,7 @@ project/assembly_name="mini-jam-221"
 
 player="player"
 enemies="enemies"
+corpses=""
 
 [gui]
 

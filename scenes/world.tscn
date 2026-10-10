@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c6fedtrfcmg2b"]
+
+[ext_resource type="PackedScene" uid="uid://d1l2otshttcgw" path="res://scenes/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://8ft1snwgea0" path="res://scenes/enemy.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://bictx71pvou6i" path="res://scenes/ui.tscn" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://dwfxrbjebp4vx" path="res://scripts/spawner.gd" id="4_aqk2v"]
+
+[node name="World" type="Node2D" unique_id=2134766563]
+
+[node name="Background" type="Polygon2D" parent="." unique_id=461531915]
+color = Color(0.83889705, 0.83889705, 0.838897, 1)
+polygon = PackedVector2Array(-1094.7927, -576.5703, 1192.4171, -583.0011, 1181.6991, 643.132, -1101.2234, 649.5628)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1163029903]
+
+[node name="Player" parent="." unique_id=681691040 instance=ExtResource("1_f3sb7")]
+
+[node name="Enemy" parent="." unique_id=1032899580 instance=ExtResource("2_fj7yv")]
+position = Vector2(-351.06888, 299.84283)
+
+[node name="Enemy2" parent="." unique_id=1389149101 instance=ExtResource("2_fj7yv")]
+position = Vector2(-290.56888, 306.4428)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=69060042]
+
+[node name="Control" parent="CanvasLayer" unique_id=1629722552 instance=ExtResource("3_tlwt5")]
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Spawner" type="Node2D" parent="." unique_id=450256535]
+position = Vector2(-417.99994, 1.1000061)
+script = ExtResource("4_aqk2v")

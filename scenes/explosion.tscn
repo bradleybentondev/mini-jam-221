@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://y87jhoxralge"]
+
+[ext_resource type="Texture2D" uid="uid://ci6fvcdlh2afp" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_1.png" id="1_4jttm"]
+[ext_resource type="Texture2D" uid="uid://l5t6tjefoykn" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_2.png" id="2_6smmu"]
+[ext_resource type="Texture2D" uid="uid://2obdxc0a8c8g" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_3.png" id="3_l208b"]
+[ext_resource type="Texture2D" uid="uid://dcncgjem408qc" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_4.png" id="4_dvsvq"]
+[ext_resource type="Texture2D" uid="uid://do5nn6wpbgoxr" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_5.png" id="5_4hpr0"]
+[ext_resource type="Texture2D" uid="uid://ba8v3go6nmmrd" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_6.png" id="6_dcqkm"]
+[ext_resource type="Texture2D" uid="uid://bicvki0abnmud" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_7.png" id="7_pw7mt"]
+[ext_resource type="Texture2D" uid="uid://c0o8gh72ihaiv" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_8.png" id="8_x2c5d"]
+[ext_resource type="Texture2D" uid="uid://p25ge6nlahs4" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_9.png" id="9_0j0nb"]
+[ext_resource type="Texture2D" uid="uid://bc8nbspxcsoy6" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_10.png" id="10_xe657"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okgmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4jttm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6smmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l208b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dvsvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4hpr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dcqkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pw7mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x2c5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0j0nb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xe657")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D" unique_id=1847106343]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_okgmn")
