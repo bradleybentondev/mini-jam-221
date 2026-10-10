@@ -14,7 +14,7 @@ var player: Player
 
 @export var shape: CollisionShape2D
 
-@export var decompose_time: float = 15.0
+@export var decompose_delay: float = 15.0
 
 @export var sprite: AnimatedSprite2D
 
@@ -44,28 +44,27 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
-	if(_colliding.size() > 0):
+	if (_colliding.size() > 0):
 		for enemy in _colliding:
 			var total_radius = (shape.shape as CircleShape2D).radius + (enemy.shape.shape as CircleShape2D).radius
 
-			var pushback_strength = (1 - (self.position.distance_to(enemy.position)/total_radius))*2
+			var pushback_strength = (1 - (self.position.distance_to(enemy.position) / total_radius)) * 2
 			var pushback_direction = (enemy.position - self.position).normalized()
 			self.position -= pushback_direction * pushback_strength
 
-	if(dead):
+	if (dead):
 		return
 
 	_process_status_effects(delta)
 
-	if(dead):
+	if (dead):
 		return
 
-	if(_hit):
+	if (_hit):
 		self.position += _hit_velocity
 		return
 
-	if(_stun_timer > 0):
+	if (_stun_timer > 0):
 		return
 
 	var direction_to_player = self.position.direction_to(player.position)
@@ -73,16 +72,16 @@ func _physics_process(delta: float) -> void:
 
 
 func hit(hit_time: float = 0.05, damage: float = 10, hit_velocity: Vector2 = Vector2.ZERO) -> void:
-	if(_hit || dead):
+	if (_hit || dead):
 		return
 
 	_take_damage(damage)
 
-	if(dead):
+	if (dead):
 		return
 
 	_hit_velocity = hit_velocity
-	if(hit_time > 0):
+	if (hit_time > 0):
 		_hit = true
 		await get_tree().create_timer(hit_time).timeout
 	_hit = false
@@ -90,24 +89,26 @@ func hit(hit_time: float = 0.05, damage: float = 10, hit_velocity: Vector2 = Vec
 
 func _decompose() -> void:
 	var tween = get_tree().create_tween()
-	queue_free()
+	tween.tween_property(sprite, "modulate", Color(sprite.modulate.r, sprite.modulate.g, sprite.modulate.b, 0), 1.0)
+	tween.tween_callback(self.queue_free)
 
 func stun(duration: float) -> void:
-	if(dead):
+	if (dead):
 		return
 	_stun_timer = max(_stun_timer, duration)
 
 
 func slow(factor: float, duration: float) -> void:
-	if(dead):
+	if (dead):
 		return
 	_slow_factor = min(_slow_factor, factor)
 	_slow_timer = max(_slow_timer, duration)
 
 
 func burn(damage_per_second: float, duration: float) -> void:
-	if(dead):
+	if (dead):
 		return
+
 	_burn_dps = max(_burn_dps, damage_per_second)
 	_burn_timer = max(_burn_timer, duration)
 
@@ -115,41 +116,43 @@ func burn(damage_per_second: float, duration: float) -> void:
 func _take_damage(damage: float) -> void:
 	health -= damage
 
-	if(health <= 0 && !dead):
+	if (health <= 0 && !dead):
 		_die()
 
 
 func _die() -> void:
 	dead = true
 	modulate = Color.WHITE
+	sprite.stop()
 	remove_from_group("enemies")
 	add_to_group("corpses")
 	set_deferred("monitoring", false)
 	get_tree().call_group("on_enemy_killed", "on_enemy_killed", self)
+	get_tree().create_timer(decompose_delay).timeout.connect(_decompose)
 
 
 func _process_status_effects(delta: float) -> void:
 	_stun_timer = max(_stun_timer - delta, 0)
 
-	if(_slow_timer > 0):
+	if (_slow_timer > 0):
 		_slow_timer -= delta
-		if(_slow_timer <= 0):
+		if (_slow_timer <= 0):
 			_slow_factor = 1
 
-	if(_burn_timer > 0):
+	if (_burn_timer > 0):
 		_burn_timer -= delta
 		_take_damage(_burn_dps * delta)
-		if(_burn_timer <= 0):
+		if (_burn_timer <= 0):
 			_burn_dps = 0
 
-	if(dead):
+	if (dead):
 		return
 
-	if(_stun_timer > 0):
+	if (_stun_timer > 0):
 		modulate = Color(1, 1, 0.4)
-	elif(_burn_timer > 0):
+	elif (_burn_timer > 0):
 		modulate = Color(1, 0.6, 0.3)
-	elif(_slow_timer > 0):
+	elif (_slow_timer > 0):
 		modulate = Color(0.5, 0.7, 1)
 	else:
 		modulate = Color.WHITE

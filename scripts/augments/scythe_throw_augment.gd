@@ -16,7 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_timer -= delta
 	if _timer < 0:
-		var closest_enemy = _get_closest_enemy()
+		var closest_enemy = Util.get_closest_enemy(get_tree().get_nodes_in_group("enemies"), self.global_position)
 		if !is_instance_valid(closest_enemy):
 			return
 			
@@ -32,18 +32,3 @@ func _throw_scythe(closest_enemy: Node2D):
 	scythe_instance.distance = throw_distance
 	get_node("/root/World").add_child(scythe_instance)
 	scythe_instance.global_position = self.global_position
-
-func _get_closest_enemy() -> Node2D:
-	var closest_enemy: Node2D = null
-	var closest_distance: float = 10000000
-
-	var enemies = get_tree().get_nodes_in_group("enemies")
-
-	for enemy in enemies:
-		var distance = enemy.global_position.distance_squared_to(self.global_position)
-		if distance < closest_distance && is_instance_valid(enemy):
-			closest_enemy = enemy
-			closest_distance = distance
-
-
-	return closest_enemy

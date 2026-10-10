@@ -57,6 +57,6 @@ sprite = NodePath("AnimatedSprite2D")
 shape = SubResource("CircleShape2D_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2140669199]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_okgmn")
-frame_progress = 0.1314162
+frame_progress = 0.4908247

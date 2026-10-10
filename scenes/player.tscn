@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b5jveeklm8p3k" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://c4md5nel5pbfk" path="res://scripts/basic_upgrades.gd" id="2_dqkch"]
 [ext_resource type="PackedScene" uid="uid://doyuedo2crdgb" path="res://scenes/augments/scythe_throw_augment.tscn" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://h1jg5r4nr1qv" path="res://scripts/augments/corpse_explosion.gd" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_okgmn"]
 radius = 27.612095
@@ -37,6 +36,3 @@ shape = SubResource("CircleShape2D_okgmn")
 script = ExtResource("2_dqkch")
 
 [node name="ScytheThrowAugment" parent="." unique_id=1334220271 instance=ExtResource("3_qhqgy")]
-
-[node name="CorpseExplosion" type="Node" parent="." unique_id=537740661]
-script = ExtResource("4_dqkch")

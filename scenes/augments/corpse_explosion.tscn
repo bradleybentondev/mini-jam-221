@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cipb1pg1bbg3h"]
+
+[ext_resource type="Script" uid="uid://h1jg5r4nr1qv" path="res://scripts/augments/corpse_explosion.gd" id="1_2cquy"]
+
+[node name="CorpseExplosion" type="Node" unique_id=199802516]
+script = ExtResource("1_2cquy")
