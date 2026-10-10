@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var heal_per_kill: float = 0.5
+var level: int = 1
 
 func _ready() -> void:
 	add_to_group("kill_listeners")

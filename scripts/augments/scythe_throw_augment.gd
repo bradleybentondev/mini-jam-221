@@ -5,6 +5,8 @@ extends Node2D
 @export var damage: float = 100.0
 @export var cooldown: float = 10
 
+
+var level: int = 1
 var _timer: float
 
 # Called when the node enters the scene tree for the first time.

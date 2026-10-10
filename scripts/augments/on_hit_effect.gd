@@ -4,6 +4,8 @@ class_name OnHitEffect
 @export var proc_chance: float = 0.1
 @export var ranged_only: bool = false
 
+var level: int = 1
+
 func _ready() -> void:
     add_to_group("on_hit_effects")
 

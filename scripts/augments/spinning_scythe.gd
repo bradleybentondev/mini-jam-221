@@ -5,6 +5,8 @@ var speed: float = 100.0
 var damage: float = 100.0
 var distance: float = 1000.0
 
+var level: int = 1
+
 var _already_hit: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.

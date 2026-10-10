@@ -2,14 +2,6 @@ extends Node
 
 class_name LevelSystem
 
-# HOW IT CONNECTS:
-#   enemy dies -> react_to_kill() -> xp goes up -> enough? -> _level_up()
-#   -> pause game -> emit level_up_ready(choices) -> popup shows cards
-#   -> player clicks -> popup calls pick(choice) -> augment added/leveled -> unpause
-#
-# The popup (level_up_popup.gd) only ever uses the two signals and pick().
-
-
 # UI listens to this to redraw the XP bar.
 signal xp_changed(xp: float, xp_to_next: float, level: int)
 
@@ -20,7 +12,7 @@ signal level_up_ready(choices: Array)
 
 var xp: float = 0
 var level: int = 1
-var xp_to_next: float = 8
+var xp_to_next: float = 3
 
 # How many level-ups are waiting to be shown (one kill can give two levels).
 var _pending_level_ups: int = 0
@@ -33,8 +25,7 @@ var player: Player
 # id -> the augment node on the player, e.g. { "scythe_throw": <ScytheThrowAugment node> }
 var owned: Dictionary = {}
 
-# Every augment the game can offer. Fill in the rest (see the table in
-# docs/xp-levelup-assignment.md). Check each scene path exists in scenes/augments/.
+# Every augment the game can offer.
 var catalog: Array = [
 	{
 		"id": "scythe_throw",
@@ -116,52 +107,59 @@ func react_to_kill(enemy: Enemy) -> void:
 
 # Opens the popup for one waiting level-up, if there is one and none is open.
 func _show_next_level_up() -> void:
-	# TODO: if the popup is already open (_choosing) or nothing is waiting, return
-	# TODO: subtract 1 from _pending_level_ups
-	# TODO: build the choices with _make_choices()
-	# TODO: if there are no choices (everything maxed): heal the player a bit
-	#       instead, then return (don't pause)
-	# TODO: set _choosing to true
-	# TODO: pause the game:  get_tree().paused = true
-	# TODO: emit level_up_ready with the choices
-	pass
-
+	if _choosing or _pending_level_ups <= 0:
+		return
+	_pending_level_ups -= 1
+	var choices = _make_choices()
+	if choices.is_empty():
+		player.heal(10) 
+		return 
+	_choosing = true
+	get_tree().paused = true
+	emit_signal("level_up_ready", choices)
 
 # Returns up to 3 random choice dictionaries (shape is at the top of this file).
 func _make_choices() -> Array:
 	var choices: Array = []
-
-	# TODO: copy the catalog (catalog.duplicate()) and shuffle() the copy
-	# TODO: for each entry in the shuffled copy:
-	#         - stop once you have 3 choices
-	#         - if it's owned and its level is already entry["max_level"], skip it
-	#           (owned[id].level tells you its current level)
-	#         - otherwise append a Dictionary with:
-	#             id, title, description  -> copied from the entry
-	#             is_new                  -> true if the id is NOT in owned
-	#             level                   -> 1 if new, otherwise current level + 1
-
+	var pool: Array = catalog.duplicate()
+	pool.shuffle()
+	for entry in pool:
+		if choices.size() >= 3:
+			break
+		var id = entry["id"]
+		if owned.has(id) and owned[id].level >= entry["max_level"]:
+			continue
+		var choice: Dictionary = {
+			"id": id,
+			"title": entry["title"],
+			"description": entry["description"],
+			"is_new": not owned.has(id),
+			"level": 1 if not owned.has(id) else owned[id].level + 1
+		}
+		choices.append(choice)
 	return choices
 
 
 # The popup calls this when a card is clicked.
 func pick(choice: Dictionary) -> void:
-	# TODO: if choice["is_new"]:
-	#         - find the catalog entry with the same id (use _find_entry below)
-	#         - instantiate its scene
-	#         - add it as a child of the player
-	#         - store it in owned under its id
-	#       else:
-	#         - call level_up() on owned[choice["id"]]
-	# TODO: set _choosing back to false
-	# TODO: unpause the game:  get_tree().paused = false
-	# TODO: call _show_next_level_up() (in case one kill gave two levels)
-	pass
+	if choice["is_new"]:
+		var entry = _find_entry(choice["id"])
+		var augment_scene = entry["scene"]
+		var augment_instance = augment_scene.instantiate()
+		player.add_child(augment_instance)
+		owned[choice["id"]] = augment_instance
+	else:
+		owned[choice["id"]].level_up()
+	_choosing = false
+	get_tree().paused = false
+	_show_next_level_up()
 
 
-# Helper: returns the catalog entry whose "id" matches, or an empty Dictionary.
+# HELPERS
 func _find_entry(id: String) -> Dictionary:
-	# TODO: loop over catalog, return the entry whose "id" == id
+	for entry in catalog:
+		if entry["id"] == id:
+			return entry
 	return {}
 
 
@@ -174,9 +172,4 @@ func _find_entry(id: String) -> Dictionary:
 #       # make its numbers better, e.g. for scythe_throw_augment.gd:
 #       damage *= 1.25
 #       cooldown *= 0.85
-#
-# Suggested numbers per augment are in docs/xp-levelup-assignment.md.
-#
-# GOTCHA: high_noon.gd uses create_timer(duration), which keeps counting while
-# the game is paused. Change it to create_timer(duration, false) so the buff
-# doesn't run out while you're picking a card.
+

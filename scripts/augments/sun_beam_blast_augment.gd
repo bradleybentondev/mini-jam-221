@@ -2,7 +2,7 @@ extends Node2D
 
 @export var cooldown: float = 10
 
-
+var level: int = 1
 var _timer: float
 
 var _beam = preload("res://scenes/augments/sun_beam_blast.tscn")

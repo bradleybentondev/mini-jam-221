@@ -4,6 +4,8 @@ extends Node
 @export var explosion_radius: float = 100.0
 @export var explosion_damage: float = 50.0
 
+var level: int = 1
+
 var explosions = preload("res://scenes/explosion.tscn")
 
 var _timer: float
