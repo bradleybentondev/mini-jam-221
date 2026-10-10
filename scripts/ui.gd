@@ -8,6 +8,9 @@ func _ready() -> void:
 	player.connect("take_damage", func take_damage():
 		_on_player_take_damage(player.health)
 	)
+	player.connect("healed", func healed():
+		_on_player_take_damage(player.health)
+	)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
