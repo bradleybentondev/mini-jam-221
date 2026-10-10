@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hhfp02iosyxw"]
+
+[ext_resource type="Script" uid="uid://byxi1ubhebxbc" path="res://scripts/augments/burn_on_hit.gd" id="1_rk38f"]
+
+[node name="burn" type="Node2D" unique_id=1643627422]
+script = ExtResource("1_rk38f")

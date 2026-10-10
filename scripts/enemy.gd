@@ -18,6 +18,8 @@ var player: Player
 
 @export var sprite: AnimatedSprite2D
 
+@export var xp_value: float = 1
+
 var _hit: bool = false
 
 var dead: bool = false

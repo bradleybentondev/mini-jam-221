@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8ft1snwgea0" path="res://scenes/enemy.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://bictx71pvou6i" path="res://scenes/ui.tscn" id="3_tlwt5"]
 [ext_resource type="Script" uid="uid://dwfxrbjebp4vx" path="res://scripts/spawner.gd" id="4_aqk2v"]
+[ext_resource type="Script" uid="uid://dqgnoc3548ap8" path="res://scripts/level_system.gd" id="5_71j4m"]
 
 [node name="World" type="Node2D" unique_id=2134766563]
 
@@ -30,3 +31,6 @@ size_flags_vertical = 6
 [node name="Spawner" type="Node2D" parent="." unique_id=450256535]
 position = Vector2(-417.99994, 1.1000061)
 script = ExtResource("4_aqk2v")
+
+[node name="LevelSystem" type="Node" parent="." unique_id=2000844]
+script = ExtResource("5_71j4m")

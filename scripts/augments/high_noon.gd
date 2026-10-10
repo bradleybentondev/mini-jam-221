@@ -1,7 +1,5 @@
 extends Node
 
-# Every cooldown seconds, boosts the player's damage, attack speed and move speed for a while.
-
 @export var cooldown: float = 20
 @export var duration: float = 6
 @export var bonus: float = 0.5 # 0.5 = +50%
@@ -18,16 +16,12 @@ func _ready() -> void:
 	_original_color = _body.color
 	_timer = cooldown
 
-
 func _process(delta: float) -> void:
 	_timer -= delta
 	if _timer <= 0:
 		_activate()
 		_timer = cooldown
 
-
-# Adds the bonus and later subtracts it (instead of setting to 1.5 and back to 1)
-# so another buff running at the same time isn't wiped out when this one ends.
 func _activate() -> void:
 	player.damage_multiplier += bonus
 	player.attack_speed_multiplier += bonus

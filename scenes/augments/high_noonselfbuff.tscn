@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bwwfgsr0m5eoa"]
+
+[ext_resource type="Script" uid="uid://cqb80f5qe5qec" path="res://scripts/augments/high_noon.gd" id="1_i55lb"]
+
+[node name="HighNoonselfbuff" type="Node2D" unique_id=711460454]
+script = ExtResource("1_i55lb")

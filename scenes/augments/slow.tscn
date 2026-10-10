@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3ure18mp3yre"]
+
+[ext_resource type="Script" uid="uid://bpsucuyuo6v55" path="res://scripts/augments/slow_on_hit.gd" id="1_4qhwf"]
+
+[node name="slow" type="Node2D" unique_id=288626312]
+script = ExtResource("1_4qhwf")

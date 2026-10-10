@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5k08vx8o0m0c"]
 
-[ext_resource type="Script" uid="uid://c4dbnmly7ukl" path="res://scenes/sun_beam_blast_augment.gd" id="1_xbxwr"]
+[ext_resource type="Script" uid="uid://dec6udc0oqolo" path="res://scripts/augments/sun_beam_blast_augment.gd" id="1_xbxwr"]
 
 [node name="SunBeamBlastAugment" type="Node2D" unique_id=1828499341]
 script = ExtResource("1_xbxwr")

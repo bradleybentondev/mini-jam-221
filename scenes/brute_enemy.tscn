@@ -52,6 +52,7 @@ health = 150.0
 hit_mass = 8.0
 shape = NodePath("CollisionShape2D")
 sprite = NodePath("AnimatedSprite2D")
+xp_value = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707196298]
 shape = SubResource("CircleShape2D_4gyqm")

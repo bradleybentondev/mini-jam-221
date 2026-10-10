@@ -2,12 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b5jveeklm8p3k" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://c4md5nel5pbfk" path="res://scripts/basic_upgrades.gd" id="2_dqkch"]
-[ext_resource type="PackedScene" uid="uid://doyuedo2crdgb" path="res://scenes/augments/scythe_throw_augment.tscn" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://caw3bwn201tku" path="res://scripts/augments/stun_on_hit.gd" id="5_fjrip"]
-[ext_resource type="Script" uid="uid://c3uj2ahfu3uum" path="res://scripts/augments/vampyric_suck.gd" id="5_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://c5k08vx8o0m0c" path="res://scenes/augments/sun_beam_blast_augment.tscn" id="5_tuyoq"]
-[ext_resource type="Script" uid="uid://byxi1ubhebxbc" path="res://scripts/augments/burn_on_hit.gd" id="6_smehm"]
-[ext_resource type="Script" uid="uid://bpsucuyuo6v55" path="res://scripts/augments/slow_on_hit.gd" id="7_ur7pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_okgmn"]
 radius = 27.612095
@@ -39,19 +33,3 @@ shape = SubResource("CircleShape2D_okgmn")
 
 [node name="BasicUpgrades" type="Node" parent="." unique_id=1414205932]
 script = ExtResource("2_dqkch")
-
-[node name="ScytheThrowAugment" parent="." unique_id=1334220271 instance=ExtResource("3_qhqgy")]
-
-[node name="VampyricSuck" type="Node2D" parent="." unique_id=686089112]
-script = ExtResource("5_qlg0r")
-
-[node name="stun" type="Node2D" parent="." unique_id=574235368]
-script = ExtResource("5_fjrip")
-
-[node name="burn" type="Node2D" parent="." unique_id=1362421427]
-script = ExtResource("6_smehm")
-
-[node name="slow" type="Node2D" parent="." unique_id=1232569443]
-script = ExtResource("7_ur7pv")
-
-[node name="SunBeamBlastAugment" parent="." unique_id=1828499341 instance=ExtResource("5_tuyoq")]

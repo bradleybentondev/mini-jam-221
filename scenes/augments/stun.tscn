@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://wtim24vs8sdx"]
+
+[ext_resource type="Script" uid="uid://caw3bwn201tku" path="res://scripts/augments/stun_on_hit.gd" id="1_1by5e"]
+
+[node name="stun" type="Node2D" unique_id=1543514348]
+script = ExtResource("1_1by5e")

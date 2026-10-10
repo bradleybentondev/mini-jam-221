@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bv2v0lm4kysr7"]
+
+[ext_resource type="Script" uid="uid://c3uj2ahfu3uum" path="res://scripts/augments/vampyric_suck.gd" id="1_0nhu8"]
+
+[node name="VampyricSuck" type="Node2D" unique_id=2083422118]
+script = ExtResource("1_0nhu8")
