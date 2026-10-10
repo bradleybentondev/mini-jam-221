@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c6fedtrfcmg2b"]
+
+[ext_resource type="PackedScene" uid="uid://d1l2otshttcgw" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://8ft1snwgea0" path="res://enemy.tscn" id="2_fj7yv"]
+
+[node name="World" type="Node2D" unique_id=2134766563]
+
+[node name="Background" type="Polygon2D" parent="." unique_id=461531915]
+color = Color(0.83889705, 0.83889705, 0.838897, 1)
+polygon = PackedVector2Array(-1094.7927, -576.5703, 1192.4171, -583.0011, 1181.6991, 643.132, -1101.2234, 649.5628)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1163029903]
+
+[node name="Player" parent="." unique_id=681691040 groups=["player"] instance=ExtResource("1_f3sb7")]
+
+[node name="Enemy" parent="." unique_id=1032899580 instance=ExtResource("2_fj7yv")]
+position = Vector2(-391.36667, 282.08447)
+speed = 5.0
