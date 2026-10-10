@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://br6bhl418eaeo"]
+
+[ext_resource type="Script" uid="uid://bt88cghsimq60" path="res://scripts/augments/sun_beam_blast.gd" id="1_noeya"]
+
+[sub_resource type="Animation" id="Animation_ymyaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_noeya"]
+resource_name = "default"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.14, 1.01, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yrapc"]
+_data = {
+&"RESET": SubResource("Animation_ymyaj"),
+&"default": SubResource("Animation_noeya")
+}
+
+[sub_resource type="Gradient" id="Gradient_noeya"]
+offsets = PackedFloat32Array(0, 0.20198676, 0.83774835, 1)
+colors = PackedColorArray(0.9098039, 0.8352941, 0.13725491, 0, 0.9098039, 0.8352941, 0.13725491, 1, 0.9098039, 0.8352941, 0.13725491, 1, 0.9098039, 0.8352941, 0.13725491, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yrapc"]
+gradient = SubResource("Gradient_noeya")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ymyaj"]
+offsets = PackedFloat32Array(0, 0.29801324, 0.79801327, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fdcup"]
+gradient = SubResource("Gradient_ymyaj")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okgmn"]
+size = Vector2(1621.818, 94.54544)
+
+[node name="SunBeamBlast" type="Node2D" unique_id=667954106 node_paths=PackedStringArray("animationPlayer", "area2D")]
+script = ExtResource("1_noeya")
+animationPlayer = NodePath("AnimationPlayer")
+area2D = NodePath("Area2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1142957467]
+libraries/ = SubResource("AnimationLibrary_yrapc")
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=2017036794]
+position = Vector2(0, 1)
+scale = Vector2(1, 1e-05)
+points = PackedVector2Array(1, -2, 1619.2728, -2)
+width = 100.0
+texture = SubResource("GradientTexture2D_yrapc")
+texture_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=1229807363]
+position = Vector2(0, 1)
+points = PackedVector2Array(1, -2, 1618.3636, -2)
+width = 50.0
+texture = SubResource("GradientTexture2D_fdcup")
+texture_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1004084314]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1523629758]
+position = Vector2(808.3637, -0.72761536)
+shape = SubResource("RectangleShape2D_okgmn")

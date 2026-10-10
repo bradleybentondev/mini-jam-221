@@ -66,7 +66,6 @@ func on_weapon_arc_area_entered(area: Area2D) -> void:
 
 	var hit_bonus = direction * (_attack_charge * 20)
 
-
 	enemy.hit(0.05, _get_damage() , normal_hit + hit_bonus)
 
 	get_tree().call_group("on_hit_effects", "try_proc", enemy, 1.0, false)
