@@ -127,7 +127,7 @@ func _die() -> void:
 	remove_from_group("enemies")
 	add_to_group("corpses")
 	set_deferred("monitoring", false)
-	get_tree().call_group("on_enemy_killed", "on_enemy_killed", self)
+	get_tree().call_group("kill_listeners", "react_to_kill", self)
 	get_tree().create_timer(decompose_delay).timeout.connect(_decompose)
 
 
