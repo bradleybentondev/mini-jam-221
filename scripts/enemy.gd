@@ -14,6 +14,10 @@ var player: Player
 
 @export var shape: CollisionShape2D
 
+@export var decompose_time: float = 15.0
+
+@export var sprite: AnimatedSprite2D
+
 var _hit: bool = false
 
 var dead: bool = false
@@ -25,6 +29,7 @@ var _colliding: Array[Enemy] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group('player')[0]
+	sprite.play()
 	connect("body_entered", _on_body_entered)
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
@@ -61,7 +66,8 @@ func hit(hit_time: float = 0.05, damage: float = 10, hit_velocity: Vector2 = Vec
 		dead = true
 		remove_from_group("enemies")
 		add_to_group("corpses")
-		self.monitoring =false
+		self.monitoring = false
+		get_tree().create_timer(decompose_time).timeout.connect(_decompose)
 		return
 
 	_hit_velocity = hit_velocity
@@ -70,6 +76,10 @@ func hit(hit_time: float = 0.05, damage: float = 10, hit_velocity: Vector2 = Vec
 		await get_tree().create_timer(hit_time).timeout
 	_hit = false
 	_hit_velocity = Vector2.ZERO
+
+func _decompose() -> void:
+	var tween = get_tree().create_tween()
+	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:

@@ -1,11 +1,48 @@
 [gd_scene format=3 uid="uid://8ft1snwgea0"]
 
 [ext_resource type="Script" uid="uid://oaq6ggsioktn" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://crx8l10blk650" path="res://art/creature-sheet2.png" id="2_md0e3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(120, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(240, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(360, 0, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okgmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ra3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 26.452972
 
-[node name="Enemy" type="Area2D" unique_id=1993724153 node_paths=PackedStringArray("shape") groups=["enemies"]]
+[node name="Enemy" type="Area2D" unique_id=1993724153 node_paths=PackedStringArray("shape", "sprite") groups=["enemies"]]
 collision_layer = 2
 collision_mask = 3
 linear_damp = 10.0
@@ -13,10 +50,13 @@ script = ExtResource("1_7p1mj")
 speed = 100.0
 hit_mass = 2.0
 shape = NodePath("CollisionShape2D")
+sprite = NodePath("AnimatedSprite2D")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=652163555]
-color = Color(0.9665025, 0, 0.25092408, 1)
-polygon = PackedVector2Array(-21.500366, -26.150253, -20.134338, 19.611649, 22.895508, 20.294662, 22.212524, -23.418198)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=801561158]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_okgmn")
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707196298]
 shape = SubResource("CircleShape2D_4gyqm")
