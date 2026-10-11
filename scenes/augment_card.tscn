@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bm1lagtgmu18r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_okgmn"]
+size = Vector2(128, 128)
+
+[node name="AugmentCard" type="Panel" unique_id=904802283]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -910.0316
+offset_bottom = -261.6908
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1109874058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=576239273]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=290670510]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_okgmn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=916857285]
+layout_mode = 2
+text = "Some Augment Name"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1559198838]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Some description about the augment here and blah blah blah blah blah blah"
+horizontal_alignment = 1
+autowrap_mode = 2
