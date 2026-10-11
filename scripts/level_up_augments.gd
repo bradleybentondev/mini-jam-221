@@ -42,18 +42,22 @@ func _on_show_augments(choices: Array, pick_func: Callable):
 	
 	var cards: Array = [card1, card2, card3]
 
-	card1.connect("gui_input", Callable(self, "_on_card_input").bind(choices[0], pick_func, cards))
-	card2.connect("gui_input", Callable(self, "_on_card_input").bind(choices[1], pick_func, cards))
-	card3.connect("gui_input", Callable(self, "_on_card_input").bind(choices[2], pick_func, cards))
+	card1.connect("gui_input", _on_card_input.bind(choices[0], pick_func, cards))
+	card2.connect("gui_input", _on_card_input.bind(choices[1], pick_func, cards))
+	card3.connect("gui_input", _on_card_input.bind(choices[2], pick_func, cards))
+	
 
 func _on_card_input(event: InputEvent, choice: Dictionary, pick_func: Callable, cards: Array) -> void:
 	if event is InputEventMouseButton and event.pressed:
+		cards.map(func(card): card.disconnect("gui_input", _on_card_input))
+		
 		pick_func.call(choice)
 		
 		cards.map(_move_picked_card.bind(choice))
 		cards.map(_move_non_picked_card.bind(choice))
 		
 		await get_tree().create_timer(1.0).timeout
+		
 
 		augment1.get_children().all(func(child): child.queue_free())
 		augment2.get_children().all(func(child): child.queue_free())
