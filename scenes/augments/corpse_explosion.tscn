@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cipb1pg1bbg3h"]
 
 [ext_resource type="Script" uid="uid://h1jg5r4nr1qv" path="res://scripts/augments/corpse_explosion.gd" id="1_2cquy"]
+[ext_resource type="Script" uid="uid://bd5jfb032d41f" path="res://scenes/pausable.gd" id="2_oew7y"]
 
 [node name="CorpseExplosion" type="Node" unique_id=199802516]
 script = ExtResource("1_2cquy")
+
+[node name="Pausable" type="Node" parent="." unique_id=264815088]
+script = ExtResource("2_oew7y")
+metadata/_custom_type_script = "uid://bd5jfb032d41f"

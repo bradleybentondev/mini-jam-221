@@ -2,11 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bwmxwec74x2r4" path="res://art/Cute_Fantasy_Free/Tiles/Grass_Middle.png" id="1_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://d1l2otshttcgw" path="res://scenes/player.tscn" id="1_f3sb7"]
-[ext_resource type="Texture2D" uid="uid://dwauhad6fx5eg" path="res://art/FREE DEMO + PENGUIN/Tiles and characters/frozen water.png" id="1_oo54l"]
+[ext_resource type="Script" uid="uid://bd1kbhlbqnwed" path="res://scenes/world.gd" id="1_oo54l"]
 [ext_resource type="PackedScene" uid="uid://8ft1snwgea0" path="res://scenes/enemy.tscn" id="2_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://dgqxf1js2lka7" path="res://art/Cute_Fantasy_Free/Tiles/Path_Middle.png" id="2_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://peefoolxj581" path="res://art/Cute_Fantasy_Free/Tiles/FarmLand_Tile.png" id="3_e3hyu"]
-[ext_resource type="Script" uid="uid://dwfxrbjebp4vx" path="res://scripts/spawner.gd" id="4_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://djj4wqrlmf8ay" path="res://art/Cute_Fantasy_Free/Tiles/Path_Tile.png" id="4_q5onr"]
 [ext_resource type="Script" uid="uid://dqgnoc3548ap8" path="res://scripts/level_system.gd" id="5_71j4m"]
 [ext_resource type="Texture2D" uid="uid://c2u562ml178y3" path="res://art/Cute_Fantasy_Free/Outdoor decoration/Bridge_Wood.png" id="6_2lf6f"]
@@ -22,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://ffmsxen06s36" path="res://art/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/House.png" id="15_oo54l"]
 [ext_resource type="Texture2D" uid="uid://cqdqpf2qopd6g" path="res://art/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Road copiar.png" id="16_kpybi"]
 [ext_resource type="Texture2D" uid="uid://cvjrstx0h8mlr" path="res://art/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Spring Crops.png" id="17_ctatt"]
+[ext_resource type="PackedScene" uid="uid://dxpnhl667jk2j" path="res://scenes/spawner.tscn" id="21_oo54l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37qwj"]
-texture = ExtResource("1_oo54l")
 1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhx03"]
@@ -650,6 +649,7 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 270, 0)
 
 [node name="World" type="Node2D" unique_id=2134766563]
+script = ExtResource("1_oo54l")
 
 [node name="Background" type="Polygon2D" parent="." unique_id=461531915]
 position = Vector2(-1.1140041, -1.0707499)
@@ -683,12 +683,12 @@ position = Vector2(-351.06888, 299.84283)
 [node name="Enemy2" parent="." unique_id=1389149101 instance=ExtResource("2_fj7yv")]
 position = Vector2(-290.56888, 306.4428)
 
-[node name="Spawner" type="Node2D" parent="." unique_id=450256535]
+[node name="Spawner" parent="." unique_id=1178210312 instance=ExtResource("21_oo54l")]
 position = Vector2(-417.99994, 1.1000061)
-script = ExtResource("4_aqk2v")
 
 [node name="LevelSystem" type="Node" parent="." unique_id=2000844]
 unique_name_in_owner = true
+process_mode = 3
 script = ExtResource("5_71j4m")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1349768517]

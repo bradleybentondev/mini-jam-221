@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://oaq6ggsioktn" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://crx8l10blk650" path="res://art/creature-sheet2.png" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://bd5jfb032d41f" path="res://scenes/pausable.gd" id="3_4ra3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
 atlas = ExtResource("2_md0e3")
@@ -60,3 +61,7 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707196298]
 shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="Pausable" type="Node" parent="." unique_id=200484019]
+script = ExtResource("3_4ra3w")
+metadata/_custom_type_script = "uid://bd5jfb032d41f"

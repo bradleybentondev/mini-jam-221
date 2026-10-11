@@ -114,6 +114,7 @@ func react_to_kill(enemy: Enemy) -> void:
 # Opens the popup for one waiting level-up, if there is one and none is open.
 func _show_next_level_up() -> void:
 	if _choosing or _pending_level_ups <= 0:
+		SignalBus.emit_signal("paused", false)
 		return
 	_pending_level_ups -= 1
 	var choices = _make_choices()
@@ -121,7 +122,7 @@ func _show_next_level_up() -> void:
 		player.heal(10) 
 		return 
 	_choosing = true
-	#get_tree().paused = true
+	SignalBus.emit_signal("paused", true)
 	emit_signal("level_up_ready", choices, pick)
 
 # Returns up to 3 random choice dictionaries (shape is at the top of this file).
@@ -157,7 +158,6 @@ func pick(choice: Dictionary) -> void:
 	else:
 		owned[choice["id"]].level_up()
 	_choosing = false
-	get_tree().paused = false
 	_show_next_level_up()
 
 

@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://c5k08vx8o0m0c"]
 
 [ext_resource type="Script" uid="uid://dec6udc0oqolo" path="res://scripts/augments/sun_beam_blast_augment.gd" id="1_xbxwr"]
+[ext_resource type="Script" uid="uid://bd5jfb032d41f" path="res://scenes/pausable.gd" id="2_x2lyv"]
 
 [node name="SunBeamBlastAugment" type="Node2D" unique_id=1828499341]
 script = ExtResource("1_xbxwr")
+
+[node name="Pausable" type="Node" parent="." unique_id=1159297657]
+script = ExtResource("2_x2lyv")
+metadata/_custom_type_script = "uid://bd5jfb032d41f"

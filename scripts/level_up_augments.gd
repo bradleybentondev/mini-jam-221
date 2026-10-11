@@ -10,13 +10,6 @@ var augment_card = preload("res://scenes/augment_card.tscn")
 func _ready() -> void:
 	get_node("/root/World/LevelSystem").connect("level_up_ready", _on_show_augments)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func show_level_up_augments() -> void:
-	# Implement the logic to display level-up augments here.
-	pass
 
 func _on_show_augments(choices: Array, pick_func: Callable):
 	var card1 = augment_card.instantiate() as AugmentCard
@@ -37,6 +30,9 @@ func _on_show_augments(choices: Array, pick_func: Callable):
 	
 	card3.set_title(choices[2].title)
 	card3.set_description(choices[2].description)
+
+	# add buffer to not immediately click an option
+	await get_tree().create_timer(1.0).timeout
 
 	card1.connect("gui_input", Callable(self, "_on_card_input").bind(choices[0], pick_func))
 	card2.connect("gui_input", Callable(self, "_on_card_input").bind(choices[1], pick_func))

@@ -35,6 +35,7 @@ signal healed
 func _ready() -> void:
 	weapon_arc.connect("area_entered", on_weapon_arc_area_entered)
 
+
 func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")

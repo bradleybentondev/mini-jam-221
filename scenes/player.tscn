@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b5jveeklm8p3k" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://c4md5nel5pbfk" path="res://scripts/basic_upgrades.gd" id="2_dqkch"]
 [ext_resource type="PackedScene" uid="uid://bictx71pvou6i" path="res://scenes/ui.tscn" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://bd5jfb032d41f" path="res://scenes/pausable.gd" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_okgmn"]
 radius = 27.612095
@@ -38,5 +39,10 @@ script = ExtResource("2_dqkch")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=447749179]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1941370479]
+process_mode = 2
 
 [node name="ui" parent="CanvasLayer" unique_id=1629722552 instance=ExtResource("3_qhqgy")]
+process_mode = 3
+
+[node name="Pausable" type="Node" parent="." unique_id=1766687783]
+script = ExtResource("4_dqkch")
