@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c0o8gh72ihaiv" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_8.png" id="8_x2c5d"]
 [ext_resource type="Texture2D" uid="uid://p25ge6nlahs4" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_9.png" id="9_0j0nb"]
 [ext_resource type="Texture2D" uid="uid://bc8nbspxcsoy6" path="res://art/Free-Animated-Explosions/PNG/Explosion_1/Explosion_10.png" id="10_xe657"]
+[ext_resource type="Script" uid="uid://bd5jfb032d41f" path="res://scenes/pausable.gd" id="11_6smmu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_okgmn"]
 animations = [{
@@ -52,3 +53,7 @@ animations = [{
 [node name="Explosion" type="AnimatedSprite2D" unique_id=1847106343]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_okgmn")
+
+[node name="Pausable" type="Node" parent="." unique_id=1836370543]
+script = ExtResource("11_6smmu")
+metadata/_custom_type_script = "uid://bd5jfb032d41f"

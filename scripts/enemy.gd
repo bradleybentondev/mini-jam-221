@@ -44,7 +44,6 @@ func _ready() -> void:
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
 
-
 func _physics_process(delta: float) -> void:
 	if (_colliding.size() > 0):
 		for enemy in _colliding:

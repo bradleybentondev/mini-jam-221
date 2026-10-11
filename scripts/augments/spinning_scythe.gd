@@ -13,8 +13,6 @@ var _already_hit: Dictionary = {}
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
 
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

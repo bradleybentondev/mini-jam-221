@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dxpnhl667jk2j"]
+
+[ext_resource type="Script" uid="uid://dwfxrbjebp4vx" path="res://scripts/spawner.gd" id="1_2vbf6"]
+[ext_resource type="Script" uid="uid://bd5jfb032d41f" path="res://scenes/pausable.gd" id="2_ik2nu"]
+
+[node name="Spawner" type="Node2D" unique_id=1178210312]
+script = ExtResource("1_2vbf6")
+
+[node name="Pausable" type="Node" parent="." unique_id=308714399]
+script = ExtResource("2_ik2nu")
+metadata/_custom_type_script = "uid://bd5jfb032d41f"
