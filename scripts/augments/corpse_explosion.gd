@@ -1,6 +1,6 @@
 extends Node
 
-@export var cooldown: float = 25.0
+@export var explosion_cooldown: float = 25.0
 @export var explosion_radius: float = 10.0
 @export var explosion_damage: float = 20.0
 
@@ -12,7 +12,7 @@ var _timer: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_timer = cooldown
+	_timer = explosion_cooldown
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	_timer -= delta
 	if _timer <= 0:
 		_explode()
-		_timer = cooldown
+		_timer = explosion_cooldown
 
 func _explode() -> void:
 	var corpses = get_tree().get_nodes_in_group("corpses")
@@ -59,4 +59,4 @@ func level_up() -> void:
 	level += 1
 	explosion_radius += 15.0
 	explosion_damage += 20.0
-	explosion_cooldown = max(5.0, cooldown - 2.0)
+	explosion_cooldown = max(5.0, explosion_cooldown - 2.0)

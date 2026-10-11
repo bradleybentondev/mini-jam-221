@@ -28,4 +28,3 @@ func _on_area_entered(area: Area2D) -> void:
 		var enemy = area as Enemy
 		enemy.hit(0.05, damage, direction * 10)
 		_already_hit[enemy] = true
-
