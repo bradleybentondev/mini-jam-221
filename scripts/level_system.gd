@@ -129,9 +129,11 @@ func _show_next_level_up() -> void:
 		return
 	_pending_level_ups -= 1
 	var choices = _make_choices()
+	# Everything is maxed out, so heal instead and move on to the next waiting level-up.
 	if choices.is_empty():
-		player.heal(10) 
-		return 
+		player.heal(10)
+		_show_next_level_up()
+		return
 	_choosing = true
 	SignalBus.emit_signal("paused", true)
 	emit_signal("level_up_ready", choices, pick)
