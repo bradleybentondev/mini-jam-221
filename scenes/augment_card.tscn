@@ -28,14 +28,14 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_3d3tg")
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_okgmn"]
 size = Vector2(128, 128)
 
-[node name="AugmentCard" type="Panel" unique_id=904802283 node_paths=PackedStringArray("icon", "titleLabel", "descriptionLabel", "descriptionLabel2")]
+[node name="AugmentCard" type="Panel" unique_id=904802283 node_paths=PackedStringArray("icon", "titleLabel", "levelLabel", "descriptionLabel", "descriptionLabel2")]
 custom_minimum_size = Vector2(241.968, 386.309)
 propagate_maximum_size = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -910.0316
-offset_bottom = -261.6908
+offset_bottom = -229.38428
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -45,6 +45,7 @@ theme = SubResource("Theme_kpybi")
 script = ExtResource("1_ppmme")
 icon = NodePath("MarginContainer/VBoxContainer/Image")
 titleLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel")
+levelLabel = NodePath("MarginContainer/VBoxContainer/LevelLabel")
 descriptionLabel = NodePath("MarginContainer/VBoxContainer/DescriptionLabel")
 descriptionLabel2 = NodePath("MarginContainer/VBoxContainer/DescriptionLabel2")
 
@@ -53,10 +54,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -6.1921387
+offset_bottom = 6.1921387
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 40
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
@@ -77,6 +80,13 @@ stretch_mode = 5
 layout_mode = 2
 text = "Some Augment Name"
 fit_content = true
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1873402956]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "NEW!"
 horizontal_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1559198838]

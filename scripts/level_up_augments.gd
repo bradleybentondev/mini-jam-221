@@ -12,43 +12,30 @@ func _ready() -> void:
 
 
 func _on_show_augments(choices: Array, pick_func: Callable):
-	var card1 = augment_card.instantiate() as AugmentCard
-	var card2 = augment_card.instantiate() as AugmentCard
-	var card3 = augment_card.instantiate() as AugmentCard
-	
-	augment1.add_child(card1)
-	await get_tree().create_timer(0.1).timeout
-	augment2.add_child(card2)
-	await get_tree().create_timer(0.1).timeout
-	augment3.add_child(card3)
-	
-	card1.set_title(choices[0].title)
-	card1.set_description(choices[0].description)
-	card1.set_description2(choices[0].description_level_up)
-	if choices[0].icon:
-		card1.set_icon(choices[0].icon)
-	
-	card2.set_title(choices[1].title)
-	card2.set_description(choices[1].description)
-	card2.set_description2(choices[0].description_level_up)
-	if choices[1].icon:
-		card2.set_icon(choices[1].icon)
-	
-	card3.set_title(choices[2].title)
-	card3.set_description(choices[2].description)
-	card3.set_description2(choices[0].description_level_up)
-	if choices[2].icon:
-		card3.set_icon(choices[2].icon)
+	# There can be fewer than 3 choices once most augments are maxed out,
+	# so only fill as many slots as there are choices.
+	var slots: Array = [augment1, augment2, augment3]
+	var cards: Array = []
+
+	for i in range(min(choices.size(), slots.size())):
+		if i > 0:
+			await get_tree().create_timer(0.1).timeout
+		var card = augment_card.instantiate() as AugmentCard
+		slots[i].add_child(card)
+		card.set_title(choices[i].title)
+		card.set_description(choices[i].description)
+		card.set_description2(choices[i].description_level_up)
+		card.set_level(choices[i].level, choices[i].is_new)
+		if choices[i].icon:
+			card.set_icon(choices[i].icon)
+		cards.append(card)
 
 	# add buffer to not immediately click an option
 	await get_tree().create_timer(1.0).timeout
-	
-	var cards: Array = [card1, card2, card3]
 
-	card1.connect("gui_input", _on_card_input.bind(choices[0], pick_func, cards))
-	card2.connect("gui_input", _on_card_input.bind(choices[1], pick_func, cards))
-	card3.connect("gui_input", _on_card_input.bind(choices[2], pick_func, cards))
-	
+	for i in range(cards.size()):
+		cards[i].connect("gui_input", _on_card_input.bind(choices[i], pick_func, cards))
+
 
 func _on_card_input(event: InputEvent, choice: Dictionary, pick_func: Callable, cards: Array) -> void:
 	if event is InputEventMouseButton and event.pressed:
