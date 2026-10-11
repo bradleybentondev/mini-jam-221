@@ -21,8 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://ffmsxen06s36" path="res://art/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/House.png" id="15_oo54l"]
 [ext_resource type="Texture2D" uid="uid://cqdqpf2qopd6g" path="res://art/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Road copiar.png" id="16_kpybi"]
 [ext_resource type="Texture2D" uid="uid://cvjrstx0h8mlr" path="res://art/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Spring Crops.png" id="17_ctatt"]
-[ext_resource type="PackedScene" uid="uid://dxpnhl667jk2j" path="res://scenes/spawner.tscn" id="21_oo54l"]
 [ext_resource type="Texture2D" uid="uid://kg0h8hed20kf" path="res://art/FREE DEMO + PENGUIN/Tiles and characters/Winter_B.png" id="19_kpybi"]
+[ext_resource type="PackedScene" uid="uid://dxpnhl667jk2j" path="res://scenes/spawner.tscn" id="21_oo54l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37qwj"]
 1:1/0 = 0

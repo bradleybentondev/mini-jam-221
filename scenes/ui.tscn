@@ -2,6 +2,25 @@
 
 [ext_resource type="Script" uid="uid://c8s34kb7cyxha" path="res://scripts/ui.gd" id="1_fyqef"]
 [ext_resource type="PackedScene" uid="uid://xhroo7hv0a5t" path="res://scenes/level_up_augments.tscn" id="2_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://dya2mujh5tase" path="res://art/KEnney UI/Tiles/Large tiles/Thick outline/tile_0028.png" id="2_yev5y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wm3ai"]
+texture = ExtResource("2_yev5y")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d3tg"]
+bg_color = Color(0.92941177, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="ui" type="Control" unique_id=1629722552 node_paths=PackedStringArray("health_bar")]
 process_mode = 2
@@ -12,19 +31,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fyqef")
-health_bar = NodePath("ProgressBar")
+health_bar = NodePath("MarginContainer/ProgressBar")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1035808804]
+[node name="LevelUpAugments" parent="." unique_id=265346378 instance=ExtResource("2_x4jx1")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1254045688]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -27.0
-offset_right = 112.59942
+offset_top = -36.0
+offset_right = 145.36153
 grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=1035808804]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_wm3ai")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3d3tg")
 step = 1.0
 value = 100.0
 show_percentage = false
-
-[node name="LevelUpAugments" parent="." unique_id=265346378 instance=ExtResource("2_x4jx1")]
-layout_mode = 1
