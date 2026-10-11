@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 func on_weapon_arc_area_entered(area: Area2D) -> void:
 	var enemy = area as Enemy
-
+	
 	var direction = self.position.direction_to(enemy.position)
 
 	var normal_hit = direction * base_attack_knockback
