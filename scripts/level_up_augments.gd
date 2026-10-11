@@ -18,8 +18,7 @@ func show_level_up_augments() -> void:
 	# Implement the logic to display level-up augments here.
 	pass
 
-func _on_show_augments(choices: Array):
-	print("showing")
+func _on_show_augments(choices: Array, pick_func: Callable):
 	var card1 = augment_card.instantiate() as AugmentCard
 	var card2 = augment_card.instantiate() as AugmentCard
 	var card3 = augment_card.instantiate() as AugmentCard
@@ -38,3 +37,15 @@ func _on_show_augments(choices: Array):
 	
 	card3.set_title(choices[2].title)
 	card3.set_description(choices[2].description)
+
+	card1.connect("gui_input", Callable(self, "_on_card_input").bind(choices[0], pick_func))
+	card2.connect("gui_input", Callable(self, "_on_card_input").bind(choices[1], pick_func))
+	card3.connect("gui_input", Callable(self, "_on_card_input").bind(choices[2], pick_func))
+
+func _on_card_input(event: InputEvent, choice: Dictionary, pick_func: Callable) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		pick_func.call(choice)
+
+		augment1.get_children().all(func(child): child.queue_free())
+		augment2.get_children().all(func(child): child.queue_free())
+		augment3.get_children().all(func(child): child.queue_free())

@@ -7,7 +7,7 @@ signal xp_changed(xp: float, xp_to_next: float, level: int)
 
 # Popup listens to this. choices is an Array of Dictionaries shaped like:
 # { "id": "burn", "title": "Burning Effect", "description": "...", "is_new": true, "level": 1 }
-signal level_up_ready(choices: Array)
+signal level_up_ready(choices: Array, pick_func: Callable)
 
 
 var xp: float = 0
@@ -122,7 +122,7 @@ func _show_next_level_up() -> void:
 		return 
 	_choosing = true
 	#get_tree().paused = true
-	emit_signal("level_up_ready", choices)
+	emit_signal("level_up_ready", choices, pick)
 
 # Returns up to 3 random choice dictionaries (shape is at the top of this file).
 func _make_choices() -> Array:
