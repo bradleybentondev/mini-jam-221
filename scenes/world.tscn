@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bwmxwec74x2r4" path="res://art/Cute_Fantasy_Free/Tiles/Grass_Middle.png" id="1_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://d1l2otshttcgw" path="res://scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://bd1kbhlbqnwed" path="res://scenes/world.gd" id="1_oo54l"]
+[ext_resource type="Texture2D" uid="uid://dwauhad6fx5eg" path="res://art/FREE DEMO + PENGUIN/Tiles and characters/frozen water.png" id="2_ctatt"]
 [ext_resource type="PackedScene" uid="uid://8ft1snwgea0" path="res://scenes/enemy.tscn" id="2_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://dgqxf1js2lka7" path="res://art/Cute_Fantasy_Free/Tiles/Path_Middle.png" id="2_w7kh3"]
 [ext_resource type="Texture2D" uid="uid://peefoolxj581" path="res://art/Cute_Fantasy_Free/Tiles/FarmLand_Tile.png" id="3_e3hyu"]
@@ -25,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dxpnhl667jk2j" path="res://scenes/spawner.tscn" id="21_oo54l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37qwj"]
+texture = ExtResource("2_ctatt")
 1:1/0 = 0
 0:0/0 = 0
 1:0/0 = 0
