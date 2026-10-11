@@ -59,4 +59,4 @@ func level_up() -> void:
 	level += 1
 	explosion_radius += 15.0
 	explosion_damage += 20.0
-	explosion_cooldown = max(5.0, cooldown - 2.0)
+	cooldown = max(5.0, cooldown - 2.0)
