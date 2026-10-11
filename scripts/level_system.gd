@@ -6,7 +6,7 @@ class_name LevelSystem
 signal xp_changed(xp: float, xp_to_next: float, level: int)
 
 # Popup listens to this. choices is an Array of Dictionaries shaped like:
-# { "id": "burn", "title": "Burning Effect", "description": "...", "is_new": true, "level": 1 }
+# { "id": "burn", "title": "Burning Effect", "description": "...", "icon": <Texture2D or null>, "is_new": true, "level": 1 }
 signal level_up_ready(choices: Array, pick_func: Callable)
 
 
@@ -33,6 +33,7 @@ var catalog: Array = [
 		"description": "Throws a scythe at the closest enemy",
 		"scene": "res://scenes/augments/scythe_throw_augment.tscn",
 		"max_level": 5,
+		"icon": preload("res://art/AUGMENT PICTURES/scythethrow.png"),
 	},
 	{
 		"id": "corpse_explosion",
@@ -40,6 +41,7 @@ var catalog: Array = [
 		"description": "Explodes a corpse, damaging nearby enemies",
 		"scene": "res://scenes/augments/corpse_explosion.tscn",
 		"max_level": 5,
+		"icon": null,
 	},
 	{
 		"id": "sun_beam_blast",
@@ -47,6 +49,7 @@ var catalog: Array = [
 		"description": "Shoots a beam of sunlight, damaging enemies in its path",
 		"scene": "res://scenes/augments/sun_beam_blast_augment.tscn",
 		"max_level": 3,
+		"icon": preload("res://art/AUGMENT PICTURES/sunbeam.png"),
 	},
 	{
 		"id": "vampyric_suck",
@@ -54,6 +57,7 @@ var catalog: Array = [
 		"description": "Absorbs health from enemies, healing the player",
 		"scene": "res://scenes/augments/vampyric_suck.tscn",
 		"max_level": 5,
+		"icon": preload("res://art/AUGMENT PICTURES/suck.png"),
 	},
 	{
 		"id": "high_noon",
@@ -61,27 +65,31 @@ var catalog: Array = [
 		"description": "Energized by the power of the sun, allowing for rapid attacks",
 		"scene": "res://scenes/augments/high_noonselfbuff.tscn",
 		"max_level": 3,
+		"icon": preload("res://art/AUGMENT PICTURES/highnoon.png"),
 	},
 	{
 		"id": "stun",
 		"title": "Stun",
 		"description": "Stuns enemies for a short duration",
 		"scene": "res://scenes/augments/stun.tscn",
-		"max_level": 5
+		"max_level": 5,
+		"icon": preload("res://art/AUGMENT PICTURES/stun.png"),
 	},
 	{
 		"id": "burning",
 		"title": "Burning Effect",
 		"description": "Sets enemies on fire, dealing damage over time",
 		"scene": "res://scenes/augments/burn.tscn",
-		"max_level": 5
+		"max_level": 5,
+		"icon": preload("res://art/AUGMENT PICTURES/burn.png"),
 	},
 	{
 		"id": "slow",
 		"title": "Slow Effect",
 		"description": "Slows enemies, reducing their movement speed",
 		"scene": "res://scenes/augments/slow.tscn",
-		"max_level": 5
+		"max_level": 5,
+		"icon": preload("res://art/AUGMENT PICTURES/slow.png"),
 	}
 ]
 
@@ -140,6 +148,7 @@ func _make_choices() -> Array:
 			"id": id,
 			"title": entry["title"],
 			"description": entry["description"],
+			"icon": entry["icon"],
 			"is_new": not owned.has(id),
 			"level": 1 if not owned.has(id) else owned[id].level + 1
 		}

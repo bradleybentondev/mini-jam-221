@@ -28,6 +28,6 @@ func _on_timer_timeout():
 	enemy.global_position = spawn_location
 	get_node("/root/World").add_child(enemy)
 	timer.start(randf_range(min_delay, max_delay))
-	min_delay = max(0.1, min_delay * 0.10)
-	max_delay = max(0.3, max_delay * 0.10)
+	min_delay = max(0.1, min_delay * 0.80)
+	max_delay = max(0.3, max_delay * 0.80)
 	

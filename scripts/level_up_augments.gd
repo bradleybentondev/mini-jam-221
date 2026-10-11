@@ -24,12 +24,18 @@ func _on_show_augments(choices: Array, pick_func: Callable):
 	
 	card1.set_title(choices[0].title)
 	card1.set_description(choices[0].description)
+	if choices[0].icon:
+		card1.set_icon(choices[0].icon)
 	
 	card2.set_title(choices[1].title)
 	card2.set_description(choices[1].description)
+	if choices[1].icon:
+		card2.set_icon(choices[1].icon)
 	
 	card3.set_title(choices[2].title)
 	card3.set_description(choices[2].description)
+	if choices[2].icon:
+		card3.set_icon(choices[2].icon)
 
 	# add buffer to not immediately click an option
 	await get_tree().create_timer(1.0).timeout
