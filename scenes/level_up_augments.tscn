@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://xhroo7hv0a5t"]
+
+[ext_resource type="Script" uid="uid://dkj5t5sl0ff5x" path="res://scripts/level_up_augments.gd" id="1_4wwc0"]
+
+[node name="LevelUpAugments" type="Control" unique_id=265346378]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4wwc0")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=395203176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=112872751]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Augment1" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=9326401]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Augment2" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=316425799]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Augment3" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=1279470479]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
