@@ -161,4 +161,3 @@ func _find_entry(id: String) -> Dictionary:
 		if entry["id"] == id:
 			return entry
 	return {}
-

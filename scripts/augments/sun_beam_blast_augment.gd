@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var cooldown: float = 10
+@export var cooldown: float = 30
 @export var damage: float = 50
 
 var level: int = 1
@@ -33,6 +33,5 @@ func _spawn_beam() -> void:
 
 func level_up() -> void:
 	level += 1
-	throw_distance += 250.0
-	throw_speed += 250.0
+	cooldown = max(5, cooldown - 7.5)
 	damage += 75
