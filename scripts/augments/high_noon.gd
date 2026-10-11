@@ -2,7 +2,7 @@ extends Node
 
 @export var cooldown: float = 30
 @export var duration: float = 3
-@export var bonus: float = 0.5 # 0.5 = +50%
+@export var bonus: float = 0.1 # 0.5 = +50%
 @export var glow_color: Color = Color(1, 0.8, 0.2, 1)
 
 var level: int = 1
@@ -39,7 +39,7 @@ func _activate() -> void:
 
 func level_up() -> void:
 	level += 1
-	bonus += .50
+	bonus += .1
 	cooldown = max(5, cooldown - 7.5)
 	duration += 1.5
 	
