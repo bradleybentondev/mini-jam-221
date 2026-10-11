@@ -39,9 +39,12 @@ theme_override_constants/separation = 24
 
 [node name="Image" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=290670510]
 layout_mode = 2
+custom_minimum_size = Vector2(128, 128)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_okgmn")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TitleLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=916857285]
 layout_mode = 2
