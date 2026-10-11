@@ -14,6 +14,9 @@ var xp: float = 0
 var level: int = 1
 var xp_to_next: float = 3
 
+# Scales all XP from kills. Lower = slower leveling (0.5 = half speed).
+@export var xp_gain_multiplier: float = 0.5
+
 # How many level-ups are waiting to be shown (one kill can give two levels).
 var _pending_level_ups: int = 0
 
@@ -108,11 +111,11 @@ func _ready() -> void:
 
 # Called by enemy.gd every time an enemy dies.
 func react_to_kill(enemy: Enemy) -> void:
-	xp += enemy.xp_value
+	xp += enemy.xp_value * xp_gain_multiplier
 	while xp >= xp_to_next:
 		xp -= xp_to_next
 		level += 1
-		xp_to_next = 5 + level * 3
+		xp_to_next *= 1.5
 		_pending_level_ups += 1
 	emit_signal("xp_changed", xp, xp_to_next, level)
 	_show_next_level_up()
