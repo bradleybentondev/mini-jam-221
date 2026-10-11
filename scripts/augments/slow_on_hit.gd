@@ -8,6 +8,6 @@ func apply_effect(enemy: Node2D) -> void:
     enemy.slow(slow_factor, slow_duration)
 
 func level_up() -> void:
-	level += 1
+    level += 1
     slow_duration += 0.25
     slow_factor += 0.05
