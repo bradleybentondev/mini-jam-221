@@ -4,6 +4,7 @@ class_name AugmentCard
 
 @export var icon: TextureRect
 @export var titleLabel: RichTextLabel
+@export var levelLabel: Label
 @export var descriptionLabel: Label
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +26,13 @@ func set_title(title: String) -> void:
 
 func set_description(description: String) -> void:
 	descriptionLabel.text = description
+
+# level is the level the augment will be at after picking it.
+func set_level(level: int, is_new: bool) -> void:
+	if is_new:
+		levelLabel.text = "NEW!"
+	else:
+		levelLabel.text = "Lv. %d -> %d" % [level - 1, level]
 
 func set_icon(texture: Texture) -> void:
 	icon.texture = texture
