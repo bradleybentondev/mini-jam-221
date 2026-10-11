@@ -41,7 +41,7 @@ var catalog: Array = [
 		"description": "Explodes a corpse, damaging nearby enemies",
 		"scene": "res://scenes/augments/corpse_explosion.tscn",
 		"max_level": 5,
-		"icon": null,
+		"icon": preload("res://art/AUGMENT PICTURES/corpseexplosion.png"),
 	},
 	{
 		"id": "sun_beam_blast",
