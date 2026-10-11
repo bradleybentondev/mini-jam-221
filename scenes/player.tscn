@@ -7,6 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_okgmn"]
 radius = 27.612095
 
+[sub_resource type="Theme" id="Theme_8u370"]
+
 [node name="Player" type="CharacterBody2D" unique_id=634798117 node_paths=PackedStringArray("weapon_arc", "basic_upgrades") groups=["player"]]
 collision_mask = 7
 script = ExtResource("1_qhqgy")
@@ -40,3 +42,4 @@ script = ExtResource("2_dqkch")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1941370479]
 
 [node name="ui" parent="CanvasLayer" unique_id=1629722552 instance=ExtResource("3_qhqgy")]
+theme = SubResource("Theme_8u370")
