@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bictx71pvou6i"]
 
 [ext_resource type="Script" uid="uid://c8s34kb7cyxha" path="res://scripts/ui.gd" id="1_fyqef"]
+[ext_resource type="PackedScene" uid="uid://xhroo7hv0a5t" path="res://scenes/level_up_augments.tscn" id="2_x4jx1"]
 
 [node name="ui" type="Control" unique_id=1629722552 node_paths=PackedStringArray("health_bar")]
 layout_mode = 3
@@ -23,3 +24,6 @@ grow_vertical = 0
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="LevelUpAugments" parent="." unique_id=265346378 instance=ExtResource("2_x4jx1")]
+layout_mode = 1

@@ -493,7 +493,6 @@ tile_set = SubResource("TileSet_xpca3")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1163029903]
 
 [node name="Player" parent="." unique_id=681691040 instance=ExtResource("1_f3sb7")]
-visible = false
 
 [node name="Enemy" parent="." unique_id=1032899580 instance=ExtResource("2_fj7yv")]
 visible = false
@@ -503,8 +502,12 @@ position = Vector2(-351.06888, 299.84283)
 visible = false
 position = Vector2(-290.56888, 306.4428)
 
+[node name="Spawner" type="Node2D" parent="." unique_id=450256535]
+position = Vector2(-417.99994, 1.1000061)
+script = ExtResource("4_aqk2v")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=69060042]
-visible = false
+follow_viewport_enabled = true
 
 [node name="Control" parent="CanvasLayer" unique_id=1629722552 instance=ExtResource("3_tlwt5")]
 offset_left = -548.0
@@ -514,9 +517,6 @@ offset_bottom = -327.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Spawner" type="Node2D" parent="." unique_id=450256535]
-position = Vector2(-417.99994, 1.1000061)
-script = ExtResource("4_aqk2v")
-
 [node name="LevelSystem" type="Node" parent="." unique_id=2000844]
+unique_name_in_owner = true
 script = ExtResource("5_71j4m")

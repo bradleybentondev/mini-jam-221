@@ -6,6 +6,8 @@
 size = Vector2(128, 128)
 
 [node name="AugmentCard" type="Panel" unique_id=904802283 node_paths=PackedStringArray("icon", "titleLabel", "descriptionLabel")]
+custom_minimum_size = Vector2(241.968, 386.309)
+propagate_maximum_size = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +15,7 @@ offset_right = -910.0316
 offset_bottom = -261.6908
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 script = ExtResource("1_ppmme")
 icon = NodePath("MarginContainer/VBoxContainer/Image")
 titleLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel")

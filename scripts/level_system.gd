@@ -31,59 +31,65 @@ var catalog: Array = [
 		"id": "scythe_throw",
 		"title": "Scythe Throw",
 		"description": "Throws a scythe at the closest enemy",
-		"scene": preload("res://scenes/augments/scythe_throw_augment.tscn"),
+		"scene": "res://scenes/augments/scythe_throw_augment.tscn",
 		"max_level": 5,
 	},
 	{
 		"id": "corpse_explosion",
 		"title": "Corpse Explosion",
 		"description": "Explodes a corpse, damaging nearby enemies",
-		"scene": preload("res://scenes/augments/corpse_explosion.tscn"),
+		"scene": "res://scenes/augments/corpse_explosion.tscn",
 		"max_level": 5,
 	},
 	{
 		"id": "sun_beam_blast",
 		"title": "Sun Beam Blast",
 		"description": "Shoots a beam of sunlight, damaging enemies in its path",
-		"scene": preload("res://scenes/augments/sun_beam_blast_augment.tscn"),
+		"scene": "res://scenes/augments/sun_beam_blast_augment.tscn",
 		"max_level": 3,
 	},
 	{
 		"id": "vampyric_suck",
 		"title": "Vampyric Suck",
 		"description": "Absorbs health from enemies, healing the player",
-		"scene": preload("res://scenes/augments/vampyric_suck.tscn"),
+		"scene": "res://scenes/augments/vampyric_suck.tscn",
 		"max_level": 5,
 	},
 	{
 		"id": "high_noon",
 		"title": "High Noon",
 		"description": "Energized by the power of the sun, allowing for rapid attacks",
-		"scene": preload("res://scenes/augments/high_noonselfbuff.tscn"),
+		"scene": "res://scenes/augments/high_noonselfbuff.tscn",
 		"max_level": 3,
 	},
 	{
 		"id": "stun",
 		"title": "Stun",
 		"description": "Stuns enemies for a short duration",
-		"scene": preload("res://scenes/augments/stun.tscn"),
+		"scene": "res://scenes/augments/stun.tscn",
 		"max_level": 5
 	},
 	{
 		"id": "burning",
 		"title": "Burning Effect",
 		"description": "Sets enemies on fire, dealing damage over time",
-		"scene": preload("res://scenes/augments/burn.tscn"),
+		"scene": "res://scenes/augments/burn.tscn",
 		"max_level": 5
 	},
 	{
 		"id": "slow",
 		"title": "Slow Effect",
 		"description": "Slows enemies, reducing their movement speed",
-		"scene": preload("res://scenes/augments/slow.tscn"),
+		"scene": "res://scenes/augments/slow.tscn",
 		"max_level": 5
 	}
 ]
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("level_up_key"):
+		print("showing level up")
+		_pending_level_ups += 1
+		_show_next_level_up()
 
 
 func _ready() -> void:
@@ -115,7 +121,7 @@ func _show_next_level_up() -> void:
 		player.heal(10) 
 		return 
 	_choosing = true
-	get_tree().paused = true
+	#get_tree().paused = true
 	emit_signal("level_up_ready", choices)
 
 # Returns up to 3 random choice dictionaries (shape is at the top of this file).
@@ -144,7 +150,7 @@ func _make_choices() -> Array:
 func pick(choice: Dictionary) -> void:
 	if choice["is_new"]:
 		var entry = _find_entry(choice["id"])
-		var augment_scene = entry["scene"]
+		var augment_scene = load(entry["scene"])
 		var augment_instance = augment_scene.instantiate()
 		player.add_child(augment_instance)
 		owned[choice["id"]] = augment_instance
