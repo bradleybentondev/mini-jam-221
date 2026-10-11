@@ -162,14 +162,3 @@ func _find_entry(id: String) -> Dictionary:
 			return entry
 	return {}
 
-
-# AUGMENT LEVELS (Task 8) -- every augment script needs:
-#
-#   var level: int = 1
-#
-#   func level_up() -> void:
-#       level += 1
-#       # make its numbers better, e.g. for scythe_throw_augment.gd:
-#       damage *= 1.25
-#       cooldown *= 0.85
-

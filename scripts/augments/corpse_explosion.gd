@@ -1,8 +1,8 @@
 extends Node
 
-@export var cooldown: float = 10
-@export var explosion_radius: float = 100.0
-@export var explosion_damage: float = 50.0
+@export var cooldown: float = 25.0
+@export var explosion_radius: float = 10.0
+@export var explosion_damage: float = 20.0
 
 var level: int = 1
 
@@ -54,3 +54,9 @@ func _hit_enemies_in_area(corpse: Node2D) -> void:
 		var enemy = result.collider
 		if !enemy.dead:
 			enemy.hit(0, explosion_damage)
+
+func level_up() -> void:
+	level += 1
+	explosion_radius += 15.0
+	explosion_damage += 20.0
+	explosion_cooldown = max(5.0, cooldown - 2.0)

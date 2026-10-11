@@ -1,9 +1,9 @@
 extends Area2D
 
 var direction: Vector2 = Vector2.ZERO
-var speed: float = 100.0
-var damage: float = 100.0
-var distance: float = 1000.0
+var speed: float
+var damage: float
+var distance: float 
 
 var level: int = 1
 
@@ -28,3 +28,4 @@ func _on_area_entered(area: Area2D) -> void:
 		var enemy = area as Enemy
 		enemy.hit(0.05, damage, direction * 10)
 		_already_hit[enemy] = true
+

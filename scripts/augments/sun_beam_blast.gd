@@ -1,6 +1,7 @@
 extends Node2D
+class_name SunBeamBlast
 
-@export var damage: float = 1000
+var damage: float
 
 @export var animationPlayer: AnimationPlayer
 @export var area2D: Area2D
