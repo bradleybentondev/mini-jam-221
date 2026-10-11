@@ -10,3 +10,7 @@ func react_to_kill(enemy: Node2D) -> void:
 	if enemy is Enemy:
 		var heal_amount = heal_per_kill
 		get_parent().heal(heal_amount)
+		
+func level_up() -> void:
+	level += 1
+	heal_per_kill += 0.75

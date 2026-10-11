@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var cooldown: float = 10
+@export var damage: float = 50
 
 var level: int = 1
 var _timer: float
@@ -23,8 +24,15 @@ func _process(delta: float) -> void:
 
 
 func _spawn_beam() -> void:
-	var beam_instance = _beam.instantiate() as Node2D
+	var beam_instance = _beam.instantiate() as SunBeamBlast
 	add_child(beam_instance)
+	beam_instance.damage = damage
 	var rotation_to_mouse = (get_global_mouse_position() - global_position).angle()
 	beam_instance.global_position = global_position
 	beam_instance.global_rotation = rotation_to_mouse
+
+func level_up() -> void:
+	level += 1
+	throw_distance += 250.0
+	throw_speed += 250.0
+	damage += 75
