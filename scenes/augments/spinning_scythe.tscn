@@ -57,6 +57,7 @@ script = ExtResource("2_u0isc")
 metadata/_custom_type_script = "uid://bd5jfb032d41f"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1678356448]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_gufms")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764692189]

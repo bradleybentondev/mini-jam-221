@@ -26,6 +26,9 @@ func _explode() -> void:
 	var corpses = get_tree().get_nodes_in_group("corpses")
 	var timePerExplode = 0.8 / corpses.size()
 	for corpse in corpses:
+		if !is_instance_valid(corpse):
+			continue
+		
 		var explosion_instance = explosions.instantiate() as AnimatedSprite2D
 		explosion_instance.position = corpse.position
 		get_tree().current_scene.add_child(explosion_instance)

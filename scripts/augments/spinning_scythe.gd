@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var animation_play := $%AnimationPlayer
+
 var direction: Vector2 = Vector2.ZERO
 var speed: float
 var damage: float
@@ -12,6 +14,7 @@ var _already_hit: Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
+	animation_play.play("spin")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
