@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b3rwskatvhv57"]
+
+[ext_resource type="Script" uid="uid://bate4y2gmrgfp" path="res://scenes/story.gd" id="1_lcs0l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okgmn"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Node2d" type="Node2D" unique_id=1579776886]
+script = ExtResource("1_lcs0l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1060989099]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1089713107]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1149.9001
+offset_bottom = 645.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=278062905]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_okgmn")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel" unique_id=1431805188]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -87.89996
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/MarginContainer" unique_id=1563391371]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Text here about the world"
+horizontal_alignment = 1
+autowrap_mode = 2

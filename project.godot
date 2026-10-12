@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="mini-jam-221"
-run/main_scene="uid://c6fedtrfcmg2b"
+run/main_scene="uid://b3rwskatvhv57"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

@@ -18,6 +18,10 @@ class_name Player
 
 @export var basic_upgrades: BasicUpgrades
 
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var weapon: Node2D = %Weapon
+
 var _hit: bool = false
 
 var _attack_charge: float = 0
@@ -34,28 +38,46 @@ signal healed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	weapon_arc.connect("area_entered", on_weapon_arc_area_entered)
-
+	animation_player.animation_finished.connect(_reset_swing)
+	
 
 func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	velocity = direction * speed * speed_multiplier
+	
+	if velocity != Vector2.ZERO:
+		sprite.play("default")
+	else:
+		sprite.stop()
 
 	move_and_slide()
 
 	var direction_to_mouse = self.position.direction_to(get_global_mouse_position())
 	weapon_arc.rotation = direction_to_mouse.angle()
+	weapon.rotation = direction_to_mouse.angle()
+
+	if direction_to_mouse.x < 0:
+		weapon.scale.x = -0.1
+		sprite.flip_h = true
+	else:
+		weapon.scale.x = 0.1
+		sprite.flip_h = false
+		
 
 	if Input.is_action_pressed("attack"):
 		_attack_charge = clamp(_attack_charge + delta * attack_speed_multiplier, 0, 1)
 
-
 	if Input.is_action_just_released("attack"):
+		animation_player.play("swing")
 		weapon_arc.set_deferred("monitoring", true)
 		await get_tree().create_timer(0.1).timeout
 		_attack_charge = 0
 		weapon_arc.set_deferred("monitoring", false)
+
+func _reset_swing(anim_name: String):
+	animation_player.play("RESET")
 	
 
 func on_weapon_arc_area_entered(area: Area2D) -> void:

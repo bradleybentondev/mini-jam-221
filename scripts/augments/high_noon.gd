@@ -14,7 +14,7 @@ var _timer: float
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
-	_body = player.get_node("Polygon2D")
+	_body = player.get_node("AnimatedSprite2D")
 	_original_color = _body.color
 	_timer = cooldown
 
