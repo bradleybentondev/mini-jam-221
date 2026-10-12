@@ -26,6 +26,9 @@ var _hit: bool = false
 
 var _attack_charge: float = 0
 
+# Stops the death screen from opening more than once.
+var _dead: bool = false
+
 # Changed by buff augments like HighNoon
 var damage_multiplier: float = 1
 var attack_speed_multiplier: float = 1
@@ -95,22 +98,27 @@ func on_weapon_arc_area_entered(area: Area2D) -> void:
 
 
 func hit(hit_time: float = 0.05, damage: float = 10) -> void:
-	if(_hit):
+	if _hit or _dead:
 		return
 
 	health -= damage
 	
 	take_damage.emit()
 
-	# if(health <= 0):
-	# 	queue_free()
-	# 	return
+	if health <= 0:
+		_die()
+		return
 
 	_hit = true
 
 	await get_tree().create_timer(hit_time).timeout
 
 	_hit = false
+
+
+func _die() -> void:
+	_dead = true
+	get_tree().current_scene.add_child(DeathScreen.new())
 
 
 func heal(amount: float) -> void:
