@@ -17,6 +17,15 @@ var xp_to_next: float = 3
 # Scales all XP from kills. Lower = slower leveling (0.5 = half speed).
 @export var xp_gain_multiplier: float = 0.5
 
+# The cutscene that plays when every augment is maxed out (the player wins).
+# Pick the .tscn in the Inspector on the LevelSystem node.
+@export_file("*.tscn") var win_scene: String = ""
+
+# Seconds to wait after the final pick before the cutscene starts, so the card animation can finish.
+@export var win_delay: float = 1.2
+
+var _won: bool = false
+
 # How many level-ups are waiting to be shown (one kill can give two levels).
 var _pending_level_ups: int = 0
 
@@ -137,10 +146,9 @@ func _show_next_level_up() -> void:
 		return
 	_pending_level_ups -= 1
 	var choices = _make_choices()
-	# Everything is maxed out, so heal instead and move on to the next waiting level-up.
+	# Everything is maxed out, so the player has won.
 	if choices.is_empty():
-		player.heal(10)
-		_show_next_level_up()
+		_win()
 		return
 	_choosing = true
 	SignalBus.emit_signal("paused", true)
@@ -181,7 +189,26 @@ func pick(choice: Dictionary) -> void:
 	else:
 		owned[choice["id"]].level_up()
 	_choosing = false
+	# That pick maxed out the last augment, so the player wins right away.
+	if _make_choices().is_empty():
+		_win()
+		return
 	_show_next_level_up()
+
+
+# Freezes the game and switches to the win cutscene.
+func _win() -> void:
+	if _won:
+		return
+	_won = true
+	_pending_level_ups = 0
+	SignalBus.emit_signal("paused", true)
+	SignalBus.emit_signal("game_won")
+	await get_tree().create_timer(win_delay).timeout
+	if win_scene == "":
+		push_warning("Player won, but LevelSystem.win_scene is not set yet.")
+		return
+	get_tree().change_scene_to_file(win_scene)
 
 
 # HELPERS
