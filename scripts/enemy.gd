@@ -125,6 +125,10 @@ func _die() -> void:
 	dead = true
 	modulate = Color.WHITE
 	sprite.stop()
+	# Corpse look: darkened/desaturated and lying on its side.
+	# (_decompose fades alpha from the sprite's current color, so this carries through.)
+	sprite.modulate = Color(0.4, 0.4, 0.45)
+	sprite.rotation_degrees = 90
 	remove_from_group("enemies")
 	add_to_group("corpses")
 	set_deferred("monitoring", false)

@@ -62,10 +62,13 @@ func _physics_process(delta: float) -> void:
 	weapon.rotation = direction_to_mouse.angle()
 
 	if direction_to_mouse.x < 0:
-		weapon.scale.x = -0.1
+		# Mirror across the aim axis (flip local Y) so the swing arc and hitbox mirror too.
+		weapon.scale = Vector2(0.1, -0.1)
+		weapon_arc.scale = Vector2(1, -1)
 		sprite.flip_h = true
 	else:
-		weapon.scale.x = 0.1
+		weapon.scale = Vector2(0.1, 0.1)
+		weapon_arc.scale = Vector2(1, 1)
 		sprite.flip_h = false
 		
 
